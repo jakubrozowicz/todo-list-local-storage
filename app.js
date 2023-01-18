@@ -15,6 +15,13 @@ const addToDo = (e) => {
     newTodo.innerText = toDoInput.value;
     newTodo.classList.add('todo-item')
     todoDiv.appendChild(newTodo);
+    if (toDoInput.value !== "") {
+        //Append to main list
+        toDoList.appendChild(todoDiv)
+    } else {
+        alert("Pole nie może być puste!");
+        return;
+    }
     //Add todo do localstorage
     saveLocalTodos(toDoInput.value);
     //Check mark button
@@ -27,11 +34,6 @@ const addToDo = (e) => {
     removeButton.innerHTML = '<i class="fas fa-trash"></i>';
     removeButton.classList.add("remove-btn")
     todoDiv.appendChild(removeButton);
-
-    if (toDoInput.value == "") return;
-
-    //Append to main list
-    toDoList.appendChild(todoDiv)
     //Clear input value
     toDoInput.value = "";
 }
